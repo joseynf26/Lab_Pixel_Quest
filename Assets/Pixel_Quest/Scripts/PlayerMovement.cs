@@ -22,18 +22,16 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float xInput = Input.GetAxis("Horizontal");
-        if (xInput > -1)
+        if (xInput > 0)
         {
             sr1.flipX = true;
 
         }
-        else if (xInput < 1 )
+        else if (xInput < 0 )
         {
-            sr1.flipY = true;
+            sr1.flipX = false;
         }
-        {
-            sr1 .flipY = true;
-        }
+   
         rigidbody2D.velocity = new Vector2(xInput * speed, rigidbody2D.velocity.y);
     }
 }
