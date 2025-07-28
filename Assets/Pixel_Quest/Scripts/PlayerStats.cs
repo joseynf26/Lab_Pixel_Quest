@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
+    private int coinsInLevel = 0;
     public Transform respawnPoint;
     public int Health = 3;
     public int coinCount = 0;
@@ -15,6 +16,9 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
          playerUIController = GetComponent<PlayerUIController>();
+        playerUIController.StartUI();
+        coinsInLevel = GameObject.Find("Coins").transform.childCount;
+        playerUIController.UpdateCoin(coinCount + "/" + coinsInLevel);
         playerUIController.UpdateHealth(Health, maxHealth);
         }
     private void OnTriggerEnter2D(Collider2D collision)
